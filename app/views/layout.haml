@@ -1,0 +1,31 @@
+!!! 5
+
+%html(lang="zh-CN")
+  %head
+    %title= title
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta(name="viewport" content="width=device-width, initial-scale=1" charset="utf-8")
+    %link(href="img/cnao.ico" rel="shortcut icon")
+    %link(href="css/bootstrap.min.css" rel="stylesheet")
+    /[if lt IE 9]
+      script type="text/javascript" src="js/html5shiv.min.js"
+      script type="text/javascript" src="js/respond.min.js"
+    - if defined? stylesheets
+      = css stylesheets
+
+    :javascript
+      var start=navigator.appVersion.indexOf(\"MSIE\");
+      if(start!=-1)
+      {
+        if(parseInt(navigator.appVersion.slice(start+5, start+6))<8 && parseInt(navigator.appVersion.slice(start+5, start+6))>5)
+        {
+          window.location.href=\'../IE.html\';
+        }
+      }
+
+  %body
+    = yield
+    %script(type="text/javascript" src="js/jquery-1.11.3.min.js")
+    %script(type="text/javascript" src="js/bootstrap.min.js")
+    - if defined? scripts
+      = jscripts scripts
